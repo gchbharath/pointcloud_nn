@@ -126,14 +126,13 @@ class CloudSubscriber(Node):
             sensor_msgs/PointCloud2 message
         """
         labels = lables_ros(confideneces) 
+        #publishing output pointcloud when there are alteast 10 predicted labels
         if labels.shape[0] > 10:
-            #print("Got Lables",labels)
             out_cloud = np.array(xyz_cloud)
             out_cloud[:,-1] = labels
             out_cloud = out_cloud[out_cloud[:,-1] == 251]
             out_cloud = out_cloud[:,:-1]
-            #print(out_cloud.shape, labels.shape)
-            rgba  = np.zeros((out_cloud.shape[0],4))
+            rgba  = np.zeros((out_cloud.shape[0],4)) 
             rgba[:,-1] += 1
             rgba[:, 0] += 1
             out_cloud = np.concatenate((out_cloud,rgba),axis=1)
