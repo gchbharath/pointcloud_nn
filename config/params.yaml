@@ -1,0 +1,6 @@
+/predictor_node :
+  ros__parameters:
+    model_path: "/home/bharath/PEAMS/robust_SLAM/5_scans.ckpt"
+    semantic_config_path: "/home/bharath/PEAMS/robust_SLAM/4DMOS/config/semantic-kitti-mos.yaml"
+    input_cloud_topic: "/velodyne_points"
+    window_size: 5
